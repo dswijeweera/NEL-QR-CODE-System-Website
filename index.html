@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CodeStudio QR & Barcode Generator</title>
+    <link rel="icon" type="image/png/svg" href="nel_imnage.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="brand">
+            <div class="logo"><img src="nel_imnage.svg" class="logo"></div>
+            <div>
+                <h1>NOORANI ESTATES PVT LTD</h1>
+                <p>Generate, label, download and print</p>
+            </div>
+        </div>
+        <div class="pill">QR & Barcode Generator </div>
+    </header>
+    <main>
+        <section class="panel">
+            <div class="panel-head">
+                <h2>Create a code</h2>
+                <p>QR data and label text are kept separate.</p>
+            </div>
+            <div class="panel-body">
+                <div class="tabs"><button class="tab active" id="qrTab" type="button">QR Code</button><button
+                        class="tab" id="barTab" type="button">Barcode</button></div>
+                <div class="field"><label for="data">QR Code Data / Barcode Value</label><textarea id="data"
+                        placeholder="Enter the information to encode...">NOORANI ESTATES - NB-10011</textarea>
+                    <div class="hint">This exact value is encoded into the code.</div>
+                </div>
+                <div class="field"><label for="labelText">Label Text (Below Code)</label><input id="labelText"
+                        value="NOORANI ESTATES - NB-10011" placeholder="Text to print below the code">
+                    <div class="hint">This label is shown underneath the code and is not encoded.</div>
+                </div>
+                <div class="two">
+                    <div class="field"><label>QR Code Size</label>
+                        <div class="fixed-size">20 × 20 mm <span>Fixed print size</span></div>
+                        <div class="hint">QR codes print at exactly 20 mm × 20 mm.</div>
+                    </div>
+                    <div class="field"><label for="labelSize">Label text size</label><select id="labelSize">
+                            <option value="8">Small</option>
+                            <option value="10" selected>Medium</option>
+                            <option value="12">Large</option>
+                            <option value="14">Extra large</option>
+                        </select>
+                        <div class="hint">Text wraps and scales to fit the QR width.</div>
+                    </div>
+                </div>
+                <div class="actions"><button class="btn primary" id="generate" type="button">Generate QR
+                        Code</button><button class="btn secondary" id="download" disabled type="button">Download Current
+                        PNG</button><button class="btn secondary" id="print" disabled type="button">Print
+                        Current</button></div>
+            </div>
+        </section>
+        <section class="panel">
+            <div class="panel-head">
+                <h2>Preview</h2>
+                <p>Every generated code is added to the list below.</p>
+            </div>
+            <div class="panel-body">
+                <div class="preview" id="preview">
+                    <div class="empty">Your generated code will appear here.</div>
+                </div>
+                <div class="status" id="status" role="status">Loading code libraries…</div>
+                <div class="history">
+                    <div class="history-title">
+                        <h3>Recent generated items <span id="itemCount">(0)</span></h3>
+                    </div>
+                    <div class="bulk-actions">
+                        <button class="btn primary" id="printAll" type="button" disabled>Print All</button>
+                        <button class="btn secondary" id="downloadAll" type="button" disabled>Download All Codes
+                            (ZIP)</button>
+                        <button class="btn danger" id="clearAll" type="button" disabled>Clear All</button>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Encoded data</th>
+                                    <th>Label</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyRows">
+                                <tr>
+                                    <td colspan="3" class="muted-cell">No items yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="foot">CodeStudio · Internet connection is required to load QR/barcode and ZIP libraries.</div>
+    <script src="script.js"></script>
+</body>
+
+</html>
